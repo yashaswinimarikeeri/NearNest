@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10251d">
+  <title>NearNest — Find your next stay</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-mark">N</span>
+      <span>Near<span class="brand-light">Nest</span></span>
+    </a>
+    <span class="top-note">Find a place that feels like home.</span>
+    <button id="locationBtn" class="button button-light">◎ Use my location</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</span>
+        <h1>A good place to stay.<br><span>A better place to grow.</span></h1>
+        <p>Explore hostels, guest houses and accommodation around the places that matter to you.</p>
+      </div>
+      <div class="hero-photo" role="img" aria-label="Residential city neighbourhood"></div>
+    </section>
+
+    <section class="search-panel" aria-label="Search accommodation">
+      <form id="searchForm">
+        <label class="search-field location-field">
+          <span>Where do you want to stay?</span>
+          <input id="locationInput" type="text" placeholder="City, area, landmark or PIN code">
+        </label>
+        <button class="button button-primary search-button" type="submit">
+          <span>⌕</span> Find stays
+        </button>
+      </form>
+      <div class="search-bottom">
+        <span>Start with a location. All filters are optional.</span>
+        <button id="clearBtn" class="text-button" type="button">Clear filters</button>
+      </div>
+      <p id="status" class="status" role="status">Search a location to discover mapped places.</p>
+    </section>
+
+    <section id="areaSection" class="area-section" hidden>
+      <div class="area-image" id="areaImage"></div>
+      <div class="area-copy">
+        <span class="eyebrow">YOUR SEARCH AREA</span>
+        <h2 id="areaTitle">Explore the neighbourhood</h2>
+        <p id="areaDescription">Discover accommodation and places nearby.</p>
+        <a id="areaSource" href="#" target="_blank" rel="noopener noreferrer">View area source ↗</a>
+      </div>
+    </section>
+
+    <section class="explore-section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">EXPLORE YOUR OPTIONS</span>
+          <h2>Find your kind of stay</h2>
+        </div>
+        <span id="resultCount" class="result-count">No search yet</span>
+      </div>
+
+      <div class="filters">
+        <label>
+          <span>Stay type</span>
+          <select id="typeFilter">
+            <option value="all">All types</option>
+            <option value="hostel">Hostel</option>
+            <option value="guest_house">Guest house</option>
+            <option value="hotel">Hotel</option>
+            <option value="apartment">Apartment</option>
+            <option value="other">Other mapped stay</option>
+          </select>
+        </label>
+        <label>
+          <span>Stay preference</span>
+          <select id="genderFilter">
+            <option value="all">Any / not specified</option>
+            <option value="Girls">Girls only</option>
+            <option value="Boys">Boys only</option>
+            <option value="Co-living">Co-living</option>
+          </select>
+        </label>
+        <label>
+          <span>Monthly rent</span>
+          <select id="budgetFilter">
+            <option value="all">Any budget</option>
+            <option value="5000">Up to ₹5,000</option>
+            <option value="8000">Up to ₹8,000</option>
+            <option value="12000">Up to ₹12,000</option>
+          </select>
+        </label>
+        <label>
+          <span>Food</span>
+          <select id="foodFilter">
+            <option value="all">Any</option>
+            <option value="yes">Food available</option>
+            <option value="no">No food listed</option>
+          </select>
+        </label>
+      </div>
+
+      <p class="data-note">
+        Open map data is not a verified rental directory. Rent, food and occupancy rules appear only when reliable information is available.
+      </p>
+
+      <div class="results-layout">
+        <div class="results-column">
+          <div id="propertyGrid" class="property-grid">
+            <div class="empty-state">
+              <span class="empty-icon">⌕</span>
+              <h3>Your next stay is waiting</h3>
+              <p>Search for a city, neighbourhood, landmark or PIN code to begin.</p>
+            </div>
+          </div>
+        </div>
+        <aside class="map-panel">
+          <div class="map-heading">
+            <div>
+              <h3>Explore on the map</h3>
+              <p>Tap a marker to see a mapped place.</p>
+            </div>
+            <span class="live-dot">● LIVE DATA</span>
+          </div>
+          <div id="map" aria-label="Accommodation map"></div>
+          <p class="map-attribution">Map data © OpenStreetMap contributors</p>
+          <button id="openMapBtn" class="button button-outline" type="button" disabled>
+            Open area in OpenStreetMap ↗
+          </button>
+        </aside>
+      </div>
+    </section>
+
+    <section class="how-section">
+      <div>
+        <span class="eyebrow">HONEST BY DESIGN</span>
+        <h2>Know what you're looking at.</h2>
+      </div>
+      <div class="trust-grid">
+        <article><span>01</span><h3>Real mapped places</h3><p>Results come from OpenStreetMap data, not invented rental listings.</p></article>
+        <article><span>02</span><h3>Clear unknowns</h3><p>Missing rent or occupancy policies are marked as unavailable.</p></article>
+        <article><span>03</span><h3>Check before booking</h3><p>Confirm prices, vacancies, safety and stay rules with the provider.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="#"><span class="brand-mark">N</span><span>Near<span class="brand-light">Nest</span></span></a>
+    <p>Built to help you explore. Always verify accommodation details directly.</p>
+    <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap licence</a>
+  </footer>
+
+  <dialog id="detailsDialog" class="details-dialog">
+    <button id="closeDialog" class="dialog-close" aria-label="Close details">×</button>
+    <div id="detailsContent"></div>
+  </dialog>
+</body>
+</html>
+
