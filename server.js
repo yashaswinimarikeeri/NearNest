@@ -158,12 +158,13 @@ app.use("/api", async (req, res, next) => {
   try {
     await connectDB();
     next();
-  } catch (error) {
-    console.error("Database connection error:", error.message);
-    res.status(500).json({
-      message: "Database connection failed"
-    });
-  }
+} catch (error) {
+  console.error("Database connection error:", error.message);
+  res.status(500).json({
+    message: "Database connection failed",
+    error: error.message
+  });
+}
 });
 
 // Test route
