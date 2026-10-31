@@ -11,7 +11,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(__dirname));
 
 const propertySchema = new mongoose.Schema(
   {
@@ -79,7 +79,7 @@ async function startServer() {
           accommodationType: "Hostel",
           genderPolicy: "Girls",
           foodAvailable: true,
-          imageUrl: "https://placehold.co/600x400?text=Girls+Hostel",
+          imageUrl: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600",
           latitude: 12.8452,
           longitude: 77.6602,
           description: "Demo listing for student accommodation",
@@ -93,7 +93,7 @@ async function startServer() {
           accommodationType: "Hostel",
           genderPolicy: "Boys",
           foodAvailable: true,
-          imageUrl: "https://placehold.co/600x400?text=Boys+Hostel",
+          imageUrl: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600",
           latitude: 12.9166,
           longitude: 77.6101,
           description: "Demo listing for student accommodation",
@@ -107,7 +107,7 @@ async function startServer() {
           accommodationType: "Co-living",
           genderPolicy: "Co-living",
           foodAvailable: false,
-          imageUrl: "https://placehold.co/600x400?text=Co-living",
+          imageUrl: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600",
           latitude: 12.9352,
           longitude: 77.6245,
           description: "Demo shared accommodation",
@@ -121,7 +121,7 @@ async function startServer() {
           accommodationType: "PG",
           genderPolicy: "Girls",
           foodAvailable: true,
-          imageUrl: "https://placehold.co/600x400?text=PG+Room",
+          imageUrl: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600",
           latitude: 12.9591,
           longitude: 77.6974,
           description: "Demo PG listing",
@@ -135,7 +135,7 @@ async function startServer() {
           accommodationType: "PG",
           genderPolicy: "Boys",
           foodAvailable: false,
-          imageUrl: "https://placehold.co/600x400?text=Rental+Room",
+          imageUrl: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600",
           latitude: 12.9698,
           longitude: 77.7500,
           description: "Demo room listing",
@@ -149,7 +149,7 @@ async function startServer() {
           accommodationType: "Co-living",
           genderPolicy: "Co-living",
           foodAvailable: true,
-          imageUrl: "https://placehold.co/600x400?text=Shared+Home",
+          imageUrl: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600",
           latitude: 12.9116,
           longitude: 77.6389,
           description: "Demo shared home",
